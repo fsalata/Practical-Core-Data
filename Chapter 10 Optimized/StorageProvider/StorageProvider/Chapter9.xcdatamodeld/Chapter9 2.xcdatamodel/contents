@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Album" representedClassName=".Album" syncable="YES">
+        <attribute name="albumCover" optional="YES" attributeType="Transformable" valueTransformerName="UIImageTransformer" customClassName=".UIImag"/>
+        <attribute name="artist" attributeType="String"/>
+        <attribute name="genre" attributeType="String"/>
+        <attribute name="listeningNotes" attributeType="String" defaultValueString=""/>
+        <attribute name="releaseDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Album" positionX="-63" positionY="-18" width="128" height="133"/>
+    </elements>
+</model>

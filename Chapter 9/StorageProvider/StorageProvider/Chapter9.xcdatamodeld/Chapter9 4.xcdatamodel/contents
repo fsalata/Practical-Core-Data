@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Album" representedClassName=".Album" syncable="YES">
+        <attribute name="albumCover" optional="YES" attributeType="Transformable" valueTransformerName="UIImageTransformer" customClassName=".UIImag"/>
+        <attribute name="genre" attributeType="String"/>
+        <attribute name="releaseDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="artist" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="albums" inverseEntity="Artist"/>
+        <relationship name="listeningSessions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ListeningSession" inverseName="album" inverseEntity="ListeningSession"/>
+    </entity>
+    <entity name="Artist" representedClassName=".Artist" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="albums" toMany="YES" deletionRule="Cascade" destinationEntity="Album" inverseName="artist" inverseEntity="Album"/>
+    </entity>
+    <entity name="ListeningSession" representedClassName=".ListeningSession" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="notes" attributeType="String" defaultValueString=""/>
+        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="listeningSessions" inverseEntity="Album"/>
+    </entity>
+    <elements>
+        <element name="Album" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="Artist" positionX="-36" positionY="54" width="128" height="59"/>
+        <element name="ListeningSession" positionX="-54" positionY="-18" width="128" height="88"/>
+    </elements>
+</model>

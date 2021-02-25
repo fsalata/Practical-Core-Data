@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17707" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="HouseHoldTask" representedClassName="HouseHoldTask" syncable="YES" codeGenerationType="class">
+        <attribute name="frequency" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="frequencyType" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="nextDueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="taskDescription" attributeType="String" defaultValueString=""/>
+        <attribute name="version" attributeType="Integer 64" defaultValueString="1" usesScalarValueType="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskCategory" inverseName="task" inverseEntity="TaskCategory"/>
+        <relationship name="completions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TaskCompletion" inverseName="task" inverseEntity="TaskCompletion"/>
+        <fetchedProperty name="notes" optional="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Notes" predicateString="taskIdentifier == $FETCH_SOURCE.identifier"/>
+        </fetchedProperty>
+    </entity>
+    <entity name="Notes" representedClassName="Notes" syncable="YES" codeGenerationType="class">
+        <attribute name="contents" optional="YES" attributeType="String"/>
+        <attribute name="taskIdentifier" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="PublicRecord" representedClassName="PublicRecord" syncable="YES" codeGenerationType="class">
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="version" attributeType="Integer 64" defaultValueString="1" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="TaskCategory" representedClassName="TaskCategory" syncable="YES" codeGenerationType="class">
+        <attribute name="label" attributeType="String" defaultValueString=""/>
+        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HouseHoldTask" inverseName="category" inverseEntity="HouseHoldTask"/>
+    </entity>
+    <entity name="TaskCompletion" representedClassName="TaskCompletion" syncable="YES" codeGenerationType="class">
+        <attribute name="completedOn" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="version" attributeType="Integer 64" defaultValueString="1" usesScalarValueType="YES"/>
+        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HouseHoldTask" inverseName="completions" inverseEntity="HouseHoldTask"/>
+    </entity>
+    <configuration name="Local">
+        <memberEntity name="Notes"/>
+    </configuration>
+    <configuration name="Public">
+        <memberEntity name="PublicRecord"/>
+    </configuration>
+    <configuration name="Synchronized" usedWithCloudKit="YES">
+        <memberEntity name="HouseHoldTask"/>
+        <memberEntity name="TaskCompletion"/>
+        <memberEntity name="TaskCategory"/>
+    </configuration>
+    <elements>
+        <element name="HouseHoldTask" positionX="-63" positionY="-18" width="128" height="206"/>
+        <element name="Notes" positionX="-36" positionY="36" width="128" height="73"/>
+        <element name="PublicRecord" positionX="-27" positionY="72" width="128" height="73"/>
+        <element name="TaskCategory" positionX="-18" positionY="45" width="128" height="59"/>
+        <element name="TaskCompletion" positionX="-54" positionY="-9" width="128" height="88"/>
+    </elements>
+</model>

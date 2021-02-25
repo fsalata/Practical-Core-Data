@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Actor" representedClassName="Actor" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="movies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="VideoItem" inverseName="cast" inverseEntity="VideoItem"/>
+        <relationship name="roles" toMany="YES" deletionRule="Cascade" destinationEntity="Character" inverseName="actor" inverseEntity="Character"/>
+    </entity>
+    <entity name="Character" representedClassName="Character" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="actor" maxCount="1" deletionRule="Nullify" destinationEntity="Actor" inverseName="roles" inverseEntity="Actor"/>
+        <relationship name="movie" maxCount="1" deletionRule="Deny" destinationEntity="VideoItem" inverseName="characters" inverseEntity="VideoItem"/>
+    </entity>
+    <entity name="Director" representedClassName="Director" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="movies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="VideoItem" inverseName="directors" inverseEntity="VideoItem"/>
+    </entity>
+    <entity name="Episode" representedClassName="Episode" parentEntity="VideoItem" syncable="YES" codeGenerationType="class">
+        <relationship name="season" maxCount="1" deletionRule="Nullify" destinationEntity="Season" inverseName="episodes" inverseEntity="Season"/>
+    </entity>
+    <entity name="Movie" representedClassName="Movie" parentEntity="VideoItem" syncable="YES"/>
+    <entity name="Season" representedClassName="Season" syncable="YES" codeGenerationType="class">
+        <attribute name="order" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="episodes" toMany="YES" deletionRule="Nullify" destinationEntity="Episode" inverseName="season" inverseEntity="Episode"/>
+        <relationship name="series" maxCount="1" deletionRule="Nullify" destinationEntity="Series" inverseName="seasons" inverseEntity="Series"/>
+    </entity>
+    <entity name="Series" representedClassName="Series" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="seasons" toMany="YES" deletionRule="Nullify" destinationEntity="Season" inverseName="series" inverseEntity="Season"/>
+    </entity>
+    <entity name="VideoItem" representedClassName="VideoItem" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="duration" attributeType="Integer 64" usesScalarValueType="YES"/>
+        <attribute name="posterImage" optional="YES" attributeType="Transformable" valueTransformerName="UIImageTransformer" customClassName="UIImage"/>
+        <attribute name="rating" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
+        <attribute name="releaseDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="watched" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <relationship name="cast" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Actor" inverseName="movies" inverseEntity="Actor"/>
+        <relationship name="characters" toMany="YES" deletionRule="Cascade" destinationEntity="Character" inverseName="movie" inverseEntity="Character"/>
+        <relationship name="directors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Director" inverseName="movies" inverseEntity="Director"/>
+    </entity>
+    <elements>
+        <element name="Actor" positionX="-36" positionY="54" width="128" height="88"/>
+        <element name="Character" positionX="-9" positionY="63" width="128" height="88"/>
+        <element name="Director" positionX="-36" positionY="63" width="128" height="73"/>
+        <element name="Episode" positionX="0" positionY="99" width="128" height="58"/>
+        <element name="Movie" positionX="-9" positionY="90" width="128" height="43"/>
+        <element name="Season" positionX="36" positionY="117" width="128" height="88"/>
+        <element name="Series" positionX="18" positionY="108" width="128" height="73"/>
+        <element name="VideoItem" positionX="-63" positionY="-18" width="128" height="164"/>
+    </elements>
+</model>

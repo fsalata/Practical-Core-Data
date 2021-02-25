@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Chapter7_SwiftUI/Chapter7_SwiftUI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Chapter7/Chapter7.xcodeproj">
+   </FileRef>
+</Workspace>

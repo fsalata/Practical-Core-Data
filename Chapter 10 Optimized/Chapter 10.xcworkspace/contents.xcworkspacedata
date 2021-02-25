@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Chapter10_UIKit/Chapter10_UIKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Chapter10_SwiftUI/Chapter10_SwiftUI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:StorageProvider/StorageProvider.xcodeproj">
+   </FileRef>
+</Workspace>
